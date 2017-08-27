@@ -15,6 +15,7 @@
 # limitations under the License.
 
 # Preamble to mimick book environment
+import os
 import logging
 from pprint import pprint
 from sys import stdout as STDOUT
@@ -44,17 +45,27 @@ print(repr(to_bytes(b'foo')))
 print(repr(to_bytes('foo')))
 
 
-# Example 5
-try:
-    import os
-    with open('random.bin', 'w') as f:
-        f.write(os.urandom(10))
-except:
-    logging.exception('Expected')
-else:
-    assert False
+# Example 5, python 2
+# try:
+#     import os
+#     with open('random.bin', 'w') as f:
+#         f.write(os.urandom(10))
+# except:
+#     logging.exception('Expected')
+# else:
+#     assert False
 
+# Example 5, python 3
+# try:
+#     import os
+#     with open('random.bin', 'wb') as f:
+#         f.write(os.urandom(10))
+# except:
+#     logging.exception('Not Expected')
+# else:
+#     assert True
 
 # Example 6
 with open('random.bin', 'wb') as f:
     f.write(os.urandom(10))
+
